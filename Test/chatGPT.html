@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat with ChatGPT</title>
+    <nav>
+        <a href="Testest.html">HomePage</a>
+        <a href="about.html">How is chatGPT usefull?</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="chatGPT.html">ChatGPT</a>
+    </nav>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #575757;
+        }
+
+        .container {
+            padding: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .content-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        .content-section h2 {
+            color: #333;
+        }
+
+        .content-section p {
+            color: #666;
+        }
+
+    </style>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f2f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .chat-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+        }
+
+        .chat-header {
+            background-color: #4a90e2;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            margin-bottom: 15px;
+        }
+
+        .user {
+            text-align: right;
+            color: #333;
+        }
+
+        .bot {
+            text-align: left;
+            color: #4a90e2;
+        }
+
+        .chat-input {
+            display: flex;
+            border-top: 1px solid #ddd;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 15px;
+            font-size: 1rem;
+            border: none;
+            outline: none;
+        }
+
+        button {
+            padding: 15px;
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <div class="chat-header">
+        ChatGPT Demo
+    </div>
+    <div class="chat-messages" id="chat">
+        <div class="message bot">Hi there! I'm ChatGPT. How can I help you today?</div>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type your message here...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    function sendMessage() {
+        const input = document.getElementById("userInput");
+        const message = input.value.trim();
+        if (message === "") return;
+
+        const chat = document.getElementById("chat");
+
+        // Show user message
+        const userMsg = document.createElement("div");
+        userMsg.className = "message user";
+        userMsg.textContent = message;
+        chat.appendChild(userMsg);
+
+        // Simulate bot response (placeholder)
+        const botMsg = document.createElement("div");
+        botMsg.className = "message bot";
+        botMsg.textContent = "I'm just a demo! Real ChatGPT responses would go here.";
+        chat.appendChild(botMsg);
+
+        // Clear input and scroll
+        input.value = "";
+        chat.scrollTop = chat.scrollHeight;
+    }
+</script>
+
+</body>
+</html>
