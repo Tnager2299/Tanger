@@ -1,192 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat with ChatGPT</title>
     <nav>
         <a href="Testest.html">HomePage</a>
-        <a href="about.html">How is chatGPT usefull?</a>
+        <a href="about.html">How is ChatGPT Useful?</a>
         <a href="contact.html">Contact Us</a>
         <a href="chatGPT.html">ChatGPT</a>
-    </nav>
+      </nav>
+      
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChatGPT</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
+    header {
+      background-color: #333;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
 
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
+    nav {
+      background-color: #444;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+    }
 
-        nav {
-            background-color: #444;
-            overflow: hidden;
-        }
+    nav a {
+      color: white;
+      padding: 10px 15px;
+      text-decoration: none;
+      border-radius: 4px;
+    }
 
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            display: inline-block;
-        }
+    nav a:hover {
+      background-color: #575757;
+    }
 
-        nav a:hover {
-            background-color: #575757;
-        }
+    .chat-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
 
-        .container {
-            padding: 20px;
-        }
+    .messages {
+      height: 400px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      background-color: #fafafa;
+    }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+    .message {
+      margin: 10px 0;
+    }
 
-        .content-section {
-            background-color: white;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
+    .user {
+      text-align: right;
+      color: #333;
+    }
 
-        .content-section h2 {
-            color: #333;
-        }
+    .bot {
+      text-align: left;
+      color: #4a90e2;
+    }
 
-        .content-section p {
-            color: #666;
-        }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+    }
 
-    </style>
+    input {
+      width: 75%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f2f7;
-            margin: 0;
-            padding: 0;
-        }
+    button {
+      width: 20%;
+      background: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-        .chat-container {
-            max-width: 700px;
-            margin: 40px auto;
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            height: 80vh;
-        }
+    button:hover {
+      background: #357abd;
+    }
 
-        .chat-header {
-            background-color: #4a90e2;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 1.2rem;
-        }
-
-        .chat-messages {
-            flex-grow: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .message {
-            margin-bottom: 15px;
-        }
-
-        .user {
-            text-align: right;
-            color: #333;
-        }
-
-        .bot {
-            text-align: left;
-            color: #4a90e2;
-        }
-
-        .chat-input {
-            display: flex;
-            border-top: 1px solid #ddd;
-        }
-
-        input[type="text"] {
-            flex: 1;
-            padding: 15px;
-            font-size: 1rem;
-            border: none;
-            outline: none;
-        }
-
-        button {
-            padding: 15px;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #357abd;
-        }
-    </style>
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
+  <header>
+    <h1>ChatGPT</h1>
+  </header>
 
-<div class="chat-container">
-    <div class="chat-header">
-        ChatGPT Demo
-    </div>
-    <div class="chat-messages" id="chat">
-        <div class="message bot">Hi there! I'm ChatGPT. How can I help you today?</div>
-    </div>
-    <div class="chat-input">
-        <input type="text" id="userInput" placeholder="Type your message here...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-</div>
+  <div class="chat-container">
+    <div class="messages" id="chat"></div>
+    <input type="text" id="userInput" placeholder="Ask something..." onkeydown="if(event.key === 'Enter') sendMessage()" />
+    <button onclick="sendMessage()">Send</button>
+  </div>
 
-<script>
+  <footer>
+    &copy; 2025 ChatBot Demo. All rights reserved.
+  </footer>
+
+  <script>
+    const botResponses = {
+      "1+1": "2",
+      "1+2": "3",
+      "1+3": "4",
+      "2+1": "3",
+      "2+2": "4",
+      "2+3": "5",
+      "3+3": "6",
+      "4+4": "8",
+      "5+5": "10",
+      "10-5": "5",
+      "10/2": "5",
+      "2*5": "10",
+      "6*7": "42",
+      "100-50": "50",
+      "12+15": "27",
+      "9/3": "3",
+      "8+2": "10",
+      "7*8": "56",
+      "20/4": "5",
+      "15-5": "10",
+      "100+200": "300",
+
+      "hi": "Hello! How can I help you?",
+      "hello": "Hi there! Need any help?",
+      "hey": "Hey! What's up?",
+      "how are you": "I'm just code, but I'm doing great!",
+      "how old are you": "I was created recently, so I'm pretty new!",
+      "what is your name": "I'm your custom ChatBot.",
+      "who are you": "I'm a virtual assistant created to help you!",
+      "bye": "Goodbye! Have a great day!",
+      "goodbye": "See you soon!",
+      "thanks": "You're welcome!",
+      "thank you": "No problem! Always happy to help.",
+      "what's up": "Just processing some code, how about you?",
+      "who made you": "I was built by a curious developer.",
+      "can you help me": "Sure! Ask me anything.",
+      "where are you from": "I live in the browser and run on code!",
+
+      "tell me a joke": "Why do Java developers wear glasses? Because they don’t C#!",
+      "another joke": "Why was the computer cold? Because it forgot to close its Windows!",
+      "one more joke": "Why don’t robots ever get afraid? Because they have nerves of steel!",
+      "what can you do": "I can answer questions, do math, and keep you company!",
+      "are you real": "As real as 1s and 0s!",
+      "do you like humans": "I was made to help humans, so yes!",
+      "do you sleep": "I don't sleep, I just wait quietly.",
+      "do you eat": "Electricity is my snack of choice!",
+      "do you dream": "Sometimes... about electric sheep 🐑.",
+      "do you have a family": "My family is all the other bots out there!",
+      "do you play games": "Only logic games and riddles!",
+
+      "what is the capital of france": "Paris.",
+      "what is the largest planet": "Jupiter is the largest planet in our solar system.",
+      "who is the president of the usa": "As of 2025, it's Joe Biden.",
+      "what is html": "HTML stands for HyperText Markup Language.",
+      "what is css": "CSS stands for Cascading Style Sheets. It styles HTML elements.",
+      "what is javascript": "JavaScript is a programming language used to make websites interactive.",
+      "what is ai": "AI means Artificial Intelligence — making computers think like humans.",
+      "what is openai": "OpenAI is the company that created me — ChatGPT.",
+      "what is chatgpt": "ChatGPT is an AI language model designed to assist with text-based tasks.",
+      "what is python": "Python is a popular programming language used in AI, web, and automation.",
+
+      "sing a song": "🎵 I'm just a bot, sitting in code, answering questions, in helper mode! 🎵",
+      "tell me something cool": "Did you know honey never spoils?",
+      "do you love me": "In a logical way, yes!",
+      "can you dance": "Only if you code the moves!",
+      "i'm bored": "Ask me a question, or let’s do math!",
+      "who is your favorite superhero": "Iron Man — he's the most tech-savvy!",
+      "do you know siri": "We bots don't gossip, but Siri's cool.",
+      "what's your favorite color": "#00FF00 — classic green for code!",
+      "are you smart": "I try to be helpful, not perfect.",
+      "can you read my mind": "Only if you type it in here 😉"
+    };
+
     function sendMessage() {
-        const input = document.getElementById("userInput");
-        const message = input.value.trim();
-        if (message === "") return;
+      const userInput = document.getElementById("userInput").value.toLowerCase().trim();
+      const chat = document.getElementById("chat");
 
-        const chat = document.getElementById("chat");
+      if (userInput === "") return;
 
-        // Show user message
-        const userMsg = document.createElement("div");
-        userMsg.className = "message user";
-        userMsg.textContent = message;
-        chat.appendChild(userMsg);
+      const userMessage = `<div class="message user">${userInput}</div>`;
+      chat.innerHTML += userMessage;
 
-        // Simulate bot response (placeholder)
-        const botMsg = document.createElement("div");
-        botMsg.className = "message bot";
-        botMsg.textContent = "I'm just a demo! Real ChatGPT responses would go here.";
-        chat.appendChild(botMsg);
+      const botReply = botResponses[userInput] || "Sorry, I don't understand that yet.";
+      const botMessage = `<div class="message bot">${botReply}</div>`;
+      chat.innerHTML += botMessage;
 
-        // Clear input and scroll
-        input.value = "";
-        chat.scrollTop = chat.scrollHeight;
+      document.getElementById("userInput").value = "";
+      chat.scrollTop = chat.scrollHeight;
     }
-</script>
-
+  </script>
 </body>
 </html>
